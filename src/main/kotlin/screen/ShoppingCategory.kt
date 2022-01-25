@@ -22,7 +22,8 @@ class ShoppingCategory {
         } else {
             //TODO 2. Show selected category
             if (categories.contains(selectedCategory)) {
-
+                val shoppingProductList = ShoppingProductList()
+                shoppingProductList.showProducts(selectedCategory)
             } else {
                 showErrorMsg(selectedCategory)
             }
