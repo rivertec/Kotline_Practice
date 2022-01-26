@@ -1,8 +1,10 @@
 package screen
 
+import data.CartItems
 import data.Product
 
 class ShoppingProductList {
+
     private val products = arrayOf(
         Product("Fashion", "Sweaters"),
         Product("Fashion", "Pants"),
@@ -14,9 +16,9 @@ class ShoppingProductList {
         Product("Pet Supplies", "Treats"),
         Product("Pet Supplies", "Tooth Paste"),
         )
+
     private val categories: Map<String, List<Product>> = products.groupBy {
-        product ->
-        product.categoryLabel
+        product -> product.categoryLabel
     }
 
     fun showProducts(selectedCategory: String) {
@@ -26,12 +28,42 @@ class ShoppingProductList {
                 ***====================================***
                 Selected [$selectedCategory] products.
             """.trimIndent())
-            val productSize = categoryProducts.size
-            for (index in 0 until productSize) {
-                println("${index + 1}. ${categoryProducts[index].name}")
+
+            categoryProducts.forEachIndexed { index, product ->
+                println("${index + 1}. ${product.name}")
             }
+            showCartOption(categoryProducts, selectedCategory)
         } else {
             showEmptyProductMsg(selectedCategory)
+        }
+    }
+
+    private fun showCartOption(categoryProducts: List<Product>, selectedCategory: String) {
+        println(
+            """
+            ***====================================***
+            Please enter product number to put in cart.
+            """.trimIndent()
+        )
+
+        val selectedIndex = readLine()?.toIntOrNull()!! - 1
+        categoryProducts.getOrNull(selectedIndex)?.let { product ->
+            CartItems.addProduct(product)
+            println("=> Enter # to view your cart, * to keep shopping")
+            val answer = readLine()
+            if (answer == "#"){
+
+                val shoppingCart = ShoppingCart()
+                shoppingCart.showCartItems()
+
+            } else if (answer == "#"){
+
+                showProducts(selectedCategory)
+
+            } else {
+                //TODO 그 외 값을 입력한 경우
+            }
+
         }
     }
 
@@ -39,3 +71,4 @@ class ShoppingProductList {
         println("[$selectedCategory] is not prepared yet.")
     }
 }
+

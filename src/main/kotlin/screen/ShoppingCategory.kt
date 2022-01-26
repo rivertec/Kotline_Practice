@@ -18,9 +18,12 @@ class ShoppingCategory {
         }
 
         if (selectedCategory == "#") {
-            //TODO 1. move to the cart
+
+            val shoppingCart = ShoppingCart()
+            shoppingCart.showCartItems()
+
         } else {
-            //TODO 2. Show selected category
+
             if (categories.contains(selectedCategory)) {
                 val shoppingProductList = ShoppingProductList()
                 shoppingProductList.showProducts(selectedCategory)
