@@ -6,7 +6,7 @@ import data.Product
 import extension.getNotEmptyInt
 import extension.getNotEmptyString
 
-class ShoppingProductList {
+class ShoppingProductList : Screen() {
 
     private val products = arrayOf(
         Product("Fashion", "Sweaters"),
@@ -25,6 +25,9 @@ class ShoppingProductList {
     }
 
     fun showProducts(selectedCategory: String) {
+
+        ScreenStack.push(this)
+
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {
             println("""

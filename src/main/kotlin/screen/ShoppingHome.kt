@@ -3,7 +3,7 @@ package screen
 import LINE_DIVIDER
 import extension.getNotEmptyString
 
-class ShoppingHome {
+class ShoppingHome : Screen() {
 
     fun start() {
 
@@ -13,6 +13,9 @@ class ShoppingHome {
     }
 
     private fun showWelcomeMessage() {
+
+        ScreenStack.push(this)
+
         println("Welcome, to the App")
         println("Please enter your name")
 
