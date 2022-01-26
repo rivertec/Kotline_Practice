@@ -2,6 +2,8 @@ package screen
 
 import data.CartItems
 import data.Product
+import extension.getNotEmptyInt
+import extension.getNotEmptyString
 
 class ShoppingProductList {
 
@@ -46,11 +48,11 @@ class ShoppingProductList {
             """.trimIndent()
         )
 
-        val selectedIndex = readLine()?.toIntOrNull()!! - 1
+        val selectedIndex = readLine().getNotEmptyInt() - 1
         categoryProducts.getOrNull(selectedIndex)?.let { product ->
             CartItems.addProduct(product)
             println("=> Enter # to view your cart, * to keep shopping")
-            val answer = readLine()
+            val answer = readLine().getNotEmptyString()
             if (answer == "#"){
 
                 val shoppingCart = ShoppingCart()
