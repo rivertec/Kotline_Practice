@@ -1,4 +1,4 @@
-package screen;
+package screen
 
 import extension.getNotEmptyString
 
@@ -30,8 +30,8 @@ class ShoppingCategory : Screen(){
         } else {
 
             if (categories.contains(selectedCategory)) {
-                val shoppingProductList = ShoppingProductList()
-                shoppingProductList.showProducts(selectedCategory)
+                val shoppingProductList = ShoppingProductList(selectedCategory)
+                shoppingProductList.showProducts()
             } else {
                 showErrorMsg(selectedCategory)
             }
