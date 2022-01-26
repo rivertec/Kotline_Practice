@@ -1,5 +1,6 @@
 package screen
 
+import LINE_DIVIDER
 import extension.getNotEmptyString
 
 class ShoppingHome {
@@ -20,7 +21,7 @@ class ShoppingHome {
             """
             Thank you, $name
             Please select a category.
-            ***====================================***
+            $LINE_DIVIDER
         """.trimIndent()
         )
     }

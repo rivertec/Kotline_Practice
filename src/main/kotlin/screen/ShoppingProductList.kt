@@ -1,5 +1,6 @@
 package screen
 
+import LINE_DIVIDER
 import data.CartItems
 import data.Product
 import extension.getNotEmptyInt
@@ -27,7 +28,7 @@ class ShoppingProductList {
         val categoryProducts = categories[selectedCategory]
         if (!categoryProducts.isNullOrEmpty()) {
             println("""
-                ***====================================***
+                $LINE_DIVIDER
                 Selected [$selectedCategory] products.
             """.trimIndent())
 
@@ -43,7 +44,7 @@ class ShoppingProductList {
     private fun showCartOption(categoryProducts: List<Product>, selectedCategory: String) {
         println(
             """
-            ***====================================***
+            $LINE_DIVIDER
             Please enter product number to put in cart.
             """.trimIndent()
         )
@@ -58,7 +59,7 @@ class ShoppingProductList {
                 val shoppingCart = ShoppingCart()
                 shoppingCart.showCartItems()
 
-            } else if (answer == "#"){
+            } else if (answer == "*"){
 
                 showProducts(selectedCategory)
 

@@ -1,5 +1,6 @@
 package screen
 
+import LINE_DIVIDER
 import data.CartItems
 
 class ShoppingCart {
@@ -12,7 +13,7 @@ class ShoppingCart {
                 products.keys.joinToString(
                     separator = ", \n",
                     prefix = """
-                        ***====================================***
+                        $LINE_DIVIDER
                         Your Cart
                         
                     """.trimIndent()
